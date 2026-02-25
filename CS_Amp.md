@@ -46,7 +46,7 @@ MOSFET is one of the most essential components in electronics due to:
 - Determines **signal distortion** and **DC shift** between input and output
 - Detects **phase distortion**
 - Essential for **high-speed applications**
-  <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4f5a47a1-d414-4c2a-83d6-784beef9832d" />
+ <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/2c690602-e9e6-43b1-b1c1-cb41e5d1f180" />
 
 
 
