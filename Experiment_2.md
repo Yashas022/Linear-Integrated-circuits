@@ -202,13 +202,211 @@ $$
 <img width="1600" height="1000" alt="image" src="https://github.com/user-attachments/assets/ac0d9485-3200-4b5b-8493-0f6c851a7edc" />
 
 
+### AC Analysis 
+<img width="1267" height="391" alt="image" src="https://github.com/user-attachments/assets/0513a693-7809-4409-b6b2-53bdaf53c869" />
 
-   
+From the AC analysis, the midband gain of the amplifier is approximately 28 dB.
+
+Midband Gain ≈ 28.4 dB
+−3 dB Gain Level ≈ 25.4 dB
+
+From the Bode plot, this occurs at:
+
+f_H ≈ 37.66 MHz
+
+This frequency represents the upper cutoff frequency of the amplifier.
+
+Beyond this point, the gain starts decreasing rapidly due to internal MOSFET parasitic capacitances (Cgs, Cgd) which introduce dominant poles in the circuit.
+
+Hence, the bandwidth of the amplifier is approximately:
+
+Bandwidth ≈ 37.66 MHz
+
+This confirms that the circuit behaves as a low-pass amplifier with a finite high-frequency limit determined by device parasitics.
+
+
+  ##
+  ##
+  ### Experiment 2B – CS Amplifier with PMOS Active Load and NMOS Current Source
+
+##  Aim
+
+To design a Common Source (CS) amplifier using an NMOS transistor with NMOS Current Source and PMOS Active Load in 180nm TSMC technology in LTSpice with a supply voltage of 1.5V and power constraint less than or equal to 0.5mW, and to analyze its DC operating point, transient response, voltage gain, and bandwidth
+
+### Source Degeneration Effect Using M3
+
+Because M3 has finite output resistance, it introduces a degeneration effect in the source of M1.
+
+The effective voltage gain becomes:
+
+$$
+A_v = \frac{-g_{m1} r_{o2}}{1 + g_{m1} r_{o3}}
+$$
+
+The denominator term:
+
+$$
+(1 + g_{m1} r_{o3})
+$$
+
+reduces the overall gain and acts similarly to classical source degeneration.
+
+##
+
+### Effects of NMOS Current Source Degeneration
+
+- Improves bias stability  
+- Reduces sensitivity to device variations  
+- Enhances linearity  
+- Increases operating point robustness  
+
+However, the voltage gain is reduced due to the additional term in the denominator.
+
+##
+
+## Design Calculations
+
+### GIVEN PARAMETERS
+
+- Technology: TSMC 180nm
+- Supply voltage, $V_{DD} = 1.5V$
+- Power constraint ≤ 0.5mW
+- Channel length, $L_n = 180nm$
+- Threshold voltage, $V_T ≈ 0.366V$
+- Electron mobility, $\mu_n = 273.81 \times 10^{-4} \ m^2/Vs$
+- Load capacitor, $C_L = 10pF$
+- Gate oxide thickness, $t_ox = 4.1 \times 10^{-9} \ m$
+
   
+We can obsereve that all the circuit parameters will be same except 
+The Vgs of the M2 is given by 
+
+Vgs= Vov+Vtn
+Vgs = .25+.366
+Vgs= 0.61V 
+ After setting the value of the Vgs the width of the NMOS is altered in such way the desired value Vout and Id value are obtained.
+The obtained width of the NMOS W(m3) = 24.4um.
+
+## DC Analysis
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ef543fa7-7d9a-4ff0-8a08-05e58cdc49f6" />
 
 
+### Transient Analysis
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/258814bb-f5f9-4d4e-9b61-79519456082a" />
 
 
+### Simulated Gain
+
+The input signal applied was:
+
+- Type: Sine wave  
+- Frequency = 1kHz  
+- Amplitude = 10mV  
+- DC Offset = 0.91V  
+
+Measured peak-to-peak values:
+
+$$
+V_{in(p-p)} = 0.9095-0.8913 =0.0182 V
+$$
+
+$$
+V_{out(p-p)} = 1.0656 - 1.0372V = 0.0284V
+$$
+
+Voltage gain is calculated as:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{0.0284}{0.0182}
+$$
+
+$$
+A_v = 1.5604
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20 \log_{10}(A_v)
+$$
+
+$$
+A_v(dB) = 20 \log_{10}(1.5604)
+$$
+
+$$
+A_v(dB) = 3.8649 \text{ dB}
+$$
+
+
+### 3.6 AC Analysis
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/e087b91e-bc22-4298-b815-366ae97b9c4c" />
+
+
+In AC analysis, the frequency response of the Common Source amplifier is observed.
+
+The midband gain is obtained from the flat region of the Bode plot.  
+The bandwidth is defined as the frequency range between the lower cutoff frequency ($f_L$) and upper cutoff frequency ($f_H$), measured at the −3 dB points.
+
+##
+
+### Midband gain:
+
+From AC simulation:
+
+$$
+A_v = 3.530 \text{ dB}
+$$
+
+The −3 dB gain is:
+
+$$
+A_v - 3 = 3.530 - 3
+$$
+
+$$
+A_v - 3 = 0.530 \text{ dB}
+$$
+
+##
+
+### Cutoff Frequencies
+
+Lower cutoff frequency:
+
+$$
+f_L = 0
+$$
+
+Upper cutoff frequency:
+
+$$
+f_H = 184.562 \text{ MHz}
+$$
+
+##
+
+### Bandwidth
+
+Bandwidth is defined as:
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+BW = 184.562 - 0
+$$
+
+$$
+BW = 184.562 \text{ MHz}
+$$
 
 
 
