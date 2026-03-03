@@ -343,6 +343,87 @@ $$
 A_v(dB) = 3.8649 \text{ dB}
 $$
 
+$$
+A_v = \frac{-g_{m1} r_{o2}}{1 + g_{m1} r_{o3}}
+$$
+
+This expression is obtained by assuming:
+
+- $\lambda_1 = 0$ (output resistance of M1 neglected)
+- All transistors operating in saturation
+
+##
+
+### Transconductance of M1
+
+$$
+g_{m1} = \frac{2 I_D}{V_{OV}}
+$$
+
+$$
+g_{m1} = \frac{2 \times 300 \times 10^{-6}}{0.25}
+$$
+
+$$
+g_{m1} = 2.4 \times 10^{-3} \ S
+$$
+
+##
+
+### Output Resistances
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+For $\lambda = 0.1 \ V^{-1}$:
+
+$$
+r_{o2} = r_{o3} = \frac{1}{0.1 \times 300 \times 10^{-6}}
+$$
+
+$$
+r_{o2} = r_{o3} = 33.33k\Omega
+$$
+
+##
+
+### Gain Calculation
+
+$$
+A_v = \frac{-(2.4 \times 10^{-3}) \times 33.33 \times 10^3}
+{1 + (2.4 \times 10^{-3}) \times 33.33 \times 10^3}
+$$
+
+$$
+A_v = \frac{-80}{1 + 80}
+$$
+
+$$
+A_v = \frac{-80}{81}
+$$
+
+$$
+A_v \approx -0.99
+$$
+
+Magnitude:
+
+$$
+|A_v| \approx 0.99
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20 \log_{10}(0.99)
+$$
+
+$$
+A_v(dB) \approx -0.08 \text{ dB}
+$$
+
+Thus, when $g_{m1} r_{o3}$ is large, the denominator significantly reduces the gain, explaining why Experiment B produces lower gain compared to Experiment A.
 
 ### 3.6 AC Analysis
 
