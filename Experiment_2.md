@@ -489,14 +489,161 @@ $$
 BW = 184.562 \text{ MHz}
 $$
 
+# Experiment 2C - Common Source (CS) Amplifier using PMOS Active Load and Diode-Connected NMOS
 
+## Aim
 
+To design a Common Source (CS) amplifier using an NMOS transistor with PMOS Active Load and Diode-Connected NMOS in 180nm TSMC technology in LTSpice with a supply voltage of 1.8V and power constraint less than or equal to 1mW, and to analyze its DC operating point, transient response, voltage gain, and bandwidth.
 
+### Diode-Connected NMOS (M3)
 
+In this experiment, the source terminal of M1 is connected to a diode-connected NMOS transistor (M3). A diode-connected MOSFET has its gate and drain shorted together.
 
+Its small-signal resistance is:
 
+$$
+r_{d3} = \frac{1}{g_{m3} + g_{ds3}}
+$$
 
+This configuration provides:
 
+- Self-biasing of the amplifier  
+- Improved operating point stability  
+- Transistor-based current control  
 
+However, it introduces source degeneration because the source is no longer at AC ground.
+
+##
+
+**Gain is given by**
+$$
+A_v = \frac{-g_{m1} (r_{o1} || r_{o2})}{1 + g_{m1} r_{d3}}
+$$
+All parameters are same as 1st circuit the Rs is replaced by Diode connected transistor That is the gate and drain are shorted.
+
+## 3. Design Calculations
+
+### GIVEN PARAMETERS
+
+- Technology: TSMC 180nm
+- Supply voltage, $V_{DD} = 1.5V$
+- Power constraint ≤ 0.5mW
+- Channel length, $L_n = 180nm$
+- Threshold voltage, $V_T ≈ 0.366V$
+- Electron mobility, $\mu_n = 273.81 \times 10^{-4} \ m^2/Vs$
+- Load capacitor, $C_L = 10pF$
+- Gate oxide thickness, $t_ox = 4.1 \times 10^{-9} \ m$
+
+As M3 is diode-connected,
+
+$$
+V_{S1} = V_{GS3}
+$$
+
+$$
+V_{S1} = 0.61V
+$$
+
+Gate voltage becomes:
+
+$$
+V_{IN} = V_{GS1} + V_{S1}
+$$
+
+$$
+V_{IN} = 0.61 + 0.61
+$$
+
+$$
+V_{IN} = 1.22V
+$$
+
+### Output Voltage Selection
+
+For this configuration:
+
+$$
+V_{OUT} = \frac{V_{DD}}{2} + V_{DS3}
+$$
+
+$$
+V_{OUT} = 0.75 + 0.61
+$$
+
+$$
+V_{OUT} = 1.36V
+$$
+ ## DC Analysis 
+ <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/19e29823-e10f-43ca-a4ef-79c9f3866342" />
+
+### Transient Analysis
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/a454f8f7-4d56-4ca6-b032-471facbc9cba" />
+
+### Theoretical Gain
+
+For this configuration (PMOS active load with diode-connected NMOS), the voltage gain is given by:
+
+$$
+A_v = \frac{-g_{m1} r_{o2}}{1 + \frac{g_{m1}}{g_{m3}}}
+$$
+
+### Transconductance:
+
+$$
+g_{m1} = \frac{2 I_D}{V_{OV}}
+$$
+
+$$
+g_{m1} = \frac{2 \times 300 \times 10^{-6}}{0.25}
+$$
+
+$$
+g_{m1} = 2.4 \times 10^{-3} \ S
+$$
+
+Since M3 carries the same current:
+
+$$
+g_{m3} = 2.4 \times 10^{-3} \ S
+$$
+
+Assuming channel length modulation:
+
+$$
+r_{o2} = \frac{1}{\lambda I_D}
+$$
+
+$$
+r_{o2} = \frac{1}{0.1 \times 300 \times 10^{-6}}
+$$
+
+$$
+r_{o2} = 33.3k\Omega
+$$
+
+Substituting:
+
+$$
+A_v = \frac{2.4 \times 10^{-3} \times 33.3 \times 10^{3}}
+{1 + \frac{2.4 \times 10^{-3}}{2.4 \times 10^{-3}}}
+$$
+
+$$
+A_v = \frac{80}{2}
+$$
+
+$$
+A_v = 40
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20 \log_{10}(40)
+$$
+
+$$
+A_v(dB) = 32.04\ dB
+$$
 
 
