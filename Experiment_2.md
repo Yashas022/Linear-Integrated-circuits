@@ -646,4 +646,93 @@ $$
 A_v(dB) = 32.04\ dB
 $$
 
+### Simulated Gain (Transient Analysis)
 
+
+$$
+V_{in(p-p)} = 1.239V - 1.220V =  0.019\ V
+$$
+
+$$
+V_{out(p-p)} = 1.631V - 1.155V = 0.476\ V
+$$
+
+Voltage gain:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{0.476}{0.019}
+$$
+
+$$
+A_v = 25.05
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20 \log_{10}(25.05)
+$$
+
+$$
+A_v(dB) = 27.97\ dB
+$$
+
+### 3.6 AC Analysis
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/deab99a6-7507-4d84-9299-510fc22bf445" />
+
+### Midband Gain:
+
+From AC simulation:
+
+$$
+A_v = 27.27 \text{ dB}
+$$
+
+The −3 dB gain is:
+
+$$
+A_v - 3 = 27.27 - 3
+$$
+
+$$
+A_v - 3 = 24.27 \text{ dB}
+$$
+
+---
+
+### Cutoff Frequencies
+
+Lower cutoff frequency:
+
+$$
+f_L = 0
+$$
+
+Upper cutoff frequency:
+
+$$
+f_H = 83.21 \text{ MHz}
+$$
+
+---
+
+### Bandwidth
+
+Bandwidth is defined as:
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+BW = 83.21 - 0
+$$
+
+$$
+BW = 83.21 \text{ MHz}
+$$
