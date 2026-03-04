@@ -690,17 +690,17 @@ $$
 From AC simulation:
 
 $$
-A_v = 27.27 \text{ dB}
+A_v = 9 \text{ dB}
 $$
 
 The −3 dB gain is:
 
 $$
-A_v - 3 = 27.27 - 3
+A_v - 3 = 9 - 3
 $$
 
 $$
-A_v - 3 = 24.27 \text{ dB}
+A_v - 3 = 6 \text{ dB}
 $$
 
 ---
@@ -716,7 +716,7 @@ $$
 Upper cutoff frequency:
 
 $$
-f_H = 83.21 \text{ MHz}
+f_H = 500 \text{ MHz}
 $$
 
 ---
@@ -730,9 +730,53 @@ BW = f_H - f_L
 $$
 
 $$
-BW = 83.21 - 0
+BW = 500 - 0
 $$
 
 $$
-BW = 83.21 \text{ MHz}
+BW = 500 \text{ MHz}
 $$
+
+
+### Comparison of Three MOSFET Amplifier Circuits 
+
+| Metric | Exp 2A: Resistor Load | Exp 2B: NMOS Current Source | Exp 2C: Diode-Connected NMOS |
+| :--- | :--- | :--- | :--- |
+| **Degeneration Type** | Passive Resistor (Rs = 600Ω) | Active NMOS Current Source | Diode-Connected NMOS |
+| **Drain Current (Id)** | ≈ 300 µA | ≈ 300 µA | ≈ 300 µA |
+| **Power Consumption** | ≈ 0.45 mW (Meets ≤ 0.5mW goal) | ≈ 0.45 mW (Meets ≤ 0.5mW goal) | ≈ 0.45 mW (Meets ≤ 0.5mW goal) |
+| **Theoretical Gain** | 29.76 dB | -0.08 dB | 32.04 dB |
+| **Simulated Gain (Transient)** | 12.2 dB | 3.86 dB | 27.97 dB |
+| **Simulated Gain (AC / Midband)**| **28.4 dB** | **3.53 dB** | **9 dB** |
+| **Bandwidth (fH)** | **37.66 MHz** | **184.56 MHz** | **500 MHz** |
+| **Linearity** | Good (Due to passive Rs degeneration) | Excellent (Enhanced due to active current source) | Moderate to Good (Subject to diode-connected non-linearities) |
+| **Stability** | Moderate (Dependent on passive components) | High (Improves bias stability, robust operating point) | High (Self-biasing, improved operating point stability) |
+| **Primary Trade-off** | Highest practical AC gain, but severely limited bandwidth. | Massive gain reduction due to high output resistance of M3, but improved bandwidth and stability. | Highest bandwidth and good theoretical gain, though practical AC midband gain drops significantly. |
+
+# Observation by comparing the MOSFET amplifier circuits
+* Configuration 2A is best suited for low-frequency applications where maximum voltage amplification is the primary goal.
+
+* Configuration 2B is ideal for applications where signal linearity, robustness against process variations, and stability are prioritized over voltage gain.
+
+* Configuration 2C is the superior choice for broadband or high-frequency applications, offering the widest frequency response and self-biasing stability.
+
+
+# Inference 
+- First, DC analysis was performed to establish a stable operating point by carefully sizing the transistors.
+- This step fixed the drain current at ~300µA and centered the output voltage to ensure maximum signal swing.
+
+- Securing this DC bias was critical to meeting the strict ≤ 0.5mW power constraint before applying any inputs.
+
+- Second, transient analysis was conducted by injecting a 1kHz sine wave to observe the large-signal behavior.
+
+- This step allowed us to verify the linearity of the output and calculate the practical peak-to-peak voltage gain.
+
+- Finally, AC analysis was executed to evaluate the small-signal frequency response across a wide spectrum.
+
+-This last step identified the exact midband gain and the upper cutoff frequency to determine the overall bandwidth.
+
+-Progressing logically from DC bias to AC frequency response successfully highlighted the gain-bandwidth trade-offs of each configuration.
+
+# Result 
+ The sequential simulations successfully verified the fundamental gain-bandwidth trade-offs of the CS amplifier across passive and active load configurations while strictly meeting the $\le 0.5\text{mW}$ power constraint.
+ Active MOS loads are essential for practical IC integration; specifically, the diode-connected NMOS emerges as the optimal design choice for balancing self-biased stability with maximum high-frequency performance (500 MHz bandwidth).
