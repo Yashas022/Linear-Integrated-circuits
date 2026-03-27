@@ -39,7 +39,9 @@ $$
 | Load Capacitance ( C_L )  | 10 pF       |
 | Threshold Voltage ( V_T ) | ≈ 0.36 V    |
 circuit diagram:
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/0de53f6b-9d85-4bef-a413-18c6f52f1fcc" />
+
+<img width="851" height="730" alt="image" src="https://github.com/user-attachments/assets/99184e31-48c6-48c8-b16c-e395946b2adb" />
+
 
 ###  Power Constraint
 $$
@@ -137,7 +139,9 @@ $$
 W \approx 30.475 \mu m
 $$
 ## DC Analysis
-<img width="685" height="510" alt="Screenshot 2026-03-27 171108" src="https://github.com/user-attachments/assets/19abf888-c8e2-45b4-abe2-2c181b5cb738" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/19503614-100e-4873-9d3c-e03f64532f28" />
+
 
 ###  Input Common Mode Range (ICMR)
   Mainimum Input Common Mode Voltage
