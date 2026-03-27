@@ -210,7 +210,8 @@ $$
 $$
 V_{id} = 100mV < 0.48V
 $$
-<img width="1916" height="849" alt="image" src="https://github.com/user-attachments/assets/4481dfbd-0555-40a5-8220-d96f6bb296d8" />
+<img width="1916" height="417" alt="Screenshot 2026-03-27 223036" src="https://github.com/user-attachments/assets/ed9491c6-c0bc-491a-aa3a-5329c92bb2e8" />
+
 Shows sinusoidal out wave form with constant gain 
 ### Case 2: Non-Linear Region
 
