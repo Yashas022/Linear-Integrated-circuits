@@ -206,7 +206,8 @@ $$
 $$
 V_{id} = 100mV < 0.48V
 $$
-IMage
+<img width="1916" height="849" alt="image" src="https://github.com/user-attachments/assets/4481dfbd-0555-40a5-8220-d96f6bb296d8" />
+Shows sinusoidal out wave form with constant gain 
 ### Case 2: Non-Linear Region
 
 Input applied:
@@ -214,4 +215,30 @@ Input applied:
 $$
 V_{id} = 600mV > 0.48V
 $$
-Image 
+<img width="1260" height="282" alt="image" src="https://github.com/user-attachments/assets/50bd48ff-280a-4de5-84ce-0c2c34574219" />
+Distored output wave form with reduced gain
+### Theoretical Gain
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+$$
+r_o = \frac{1}{0.1 \times 0.5 \times 10^{-3}}
+$$
+
+$$
+r_o = 20k\Omega
+$$
+$$
+r_{o,eff} = 20k \parallel 20k
+$$
+
+$$
+r_{o,eff} = 10k\Omega
+$$
+$$
+A_d = g_m R_{out}
+$$
+$$
+A_d \approx 4.5
+$$
