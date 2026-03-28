@@ -247,3 +247,182 @@ $$
 $$
 A_d \approx 4.5
 $$
+
+## Circuit 2: Differential Amplifier with PMOS  and an NMOS current source
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/857dc34d-9c65-4b99-ae94-526794a162a6" />
+#Power Constraint
+$$
+P = (V_{DD} - V_{SS}) \cdot I_{SS}
+$$
+$$
+P \leq 1.8 \times 10^{-3}
+$$
+
+$$
+1.8 \cdot I_{SS} \leq 1.8 \times 10^{-3}
+$$
+
+$$
+I_{SS} \leq 1mA
+$$
+$$
+I_{D1} = I_{D2} = \frac{I_{SS}}{2}
+$$
+
+
+$$
+I_{D1} = I_{D2} = \frac{1mA}{2}
+$$
+
+$$
+I_{D1} = I_{D2} = 0.5mA
+$$
+
+Thus, each transistor carries equal current under zero differential input.
+#overdrive voltage 
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+V_{OV} = 0.7 - 0.36
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+$$
+V_{DS} = V_D - V_S
+$$
+$$
+V_{DS} = 0.7V
+$$
+
+$$
+V_{DS} > V_{OV}
+$$
+
+$$
+0.7 > 0.34
+$$
+so M1 and M2 is in saturation 
+For PMOS:
+
+
+$$
+V_{DD} = 0.9V
+$$
+
+$$
+V_D = 0V
+$$
+# Width Calculation
+$$
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (V_{OV})^2
+$$
+$$
+W = \frac{2 \times 0.5 \times 10^{-3} \times 480 \times 10^{-9}}{2.365 \times 10^{-4} \times (0.34)^2}
+$$
+
+$$
+W = \frac{480 \times 10^{-12}}{2.365 \times 10^{-4} \times 0.1156}
+$$
+
+$$
+W = \frac{480 \times 10^{-12}}{2.733 \times 10^{-5}}
+$$
+
+$$
+W \approx 17.6 \mu m
+$$
+$$
+W = \frac{2 \times 1 \times 10^{-3} \times 480 \times 10^{-9}}{2.365 \times 10^{-4} \times (0.2)^2}
+$$
+
+$$
+W = \frac{960 \times 10^{-12}}{2.365 \times 10^{-4} \times 0.04}
+$$
+
+$$
+W = \frac{960 \times 10^{-12}}{9.46 \times 10^{-6}}
+$$
+
+$$
+W \approx 101.5 \mu m
+$$
+After altering the width was set to desired requirements 
+final width is given by 
+$$
+W  : 17.56\mu m \rightarrow 27.569\mu m
+$$
+
+$$
+W_{M5} : 101.5\mu m \rightarrow 103.45\mu m
+$$
+### Input Common Mode Voltage
+$$
+V_{ICM(min)} = V_S + V_T
+$$
+$$
+V_{ICM(min)} = -0.7 + 0.36
+$$
+
+$$
+V_{ICM(min)} = -0.34V
+$$
+$$
+V_{ICM(max)} = V_D + |V_{TP}|
+$$
+$$
+V_{ICM(max)} = 0.39V
+$$
+ Final Input Common Mode Range
+
+$$
+-0.34V \le V_{ICM} \le 0.39V
+$$
+
+# DC analysis :
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/0e46576c-84ed-4d4c-910b-4948aebeda13" />
+## Output Common Mode Range (OCMR)
+$$
+V_{out(min)} - V_S \ge V_{OV}
+$$
+
+$$
+V_{out(min)} \ge V_S + V_{OV}
+$$
+$$
+V_{out(min)} = -0.7 + 0.34
+$$
+
+$$
+V_{out(min)} = -0.36V
+$$
+### Maximum Output Common Mode Voltage
+$$
+V_{DD} - V_{out(max)} \ge V_{OVp}
+$$
+
+$$
+V_{out(max)} \le V_{DD} - V_{OVp}
+$$
+$$
+V_{out(max)} = 0.9 - 0.25 =0.65
+$$
+# Vout range 
+$$
+-0.36V \le V_{out} \le 0.65V
+$$
+# Differential Input Voltage Range (Linear Region)
+
+$$
+v_{id(max)} = 2V_{OV}
+$$
+$$
+-0.5V \le v_{id} \le 0.5V
+$$
+condition for linearity 
+$$
+V_{id} = 0.1V < 0.34V
+$$
