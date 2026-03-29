@@ -426,12 +426,16 @@ condition for linearity
 $$
 V_{id} = 0.1V < 0.34V
 $$
-<img width="1480" height="293" alt="image" src="https://github.com/user-attachments/assets/db89c1d9-5537-4a88-ab44-254985a438b9" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/28cfa77c-a44c-4e77-b84f-0dfb01e65018" />
+
 condition for non- linearity 
 $$
 V_{id} = 500mV > 0.34V
 $$
-<img width="1433" height="284" alt="image" src="https://github.com/user-attachments/assets/66d9c1f7-8d56-4cab-86dd-769ade3fa9c4" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/3b4f9b15-4474-4548-8870-f2764d6577dc" />
+
 ## Theoretical  Gain
 
 A_v = √[(μ_n × (W/L)_n) / (μ_p × (W/L)_p)]
@@ -465,7 +469,8 @@ $$
 A_v(dB) = 20\log_{10}(38.5) =31.75db
 $$
 # AC analysis 
-<img width="1132" height="223" alt="image" src="https://github.com/user-attachments/assets/86e3ba72-db42-4d1b-a193-998d5365cd77" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/8b2d1392-aede-43f2-8078-6333f47f368b" />
+
 Bandwidth = f{h} - f{l}
           = 2.5 Ghz- 0 
           = 2.5 GHz
@@ -713,6 +718,16 @@ V_{in(p-p)} = 5\,mV - (-5\,mV) = 10\,mV
 V_{out(p-p)} = 161\,mV - (-240\,mV) = 401\,mV
 \]
 
+##### END 
+
+
+
+
+
+
+
+
+
 \[
 A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}} = \frac{401 \times 10^{-3}}{10 \times 10^{-3}} = 40.1
 \]
@@ -773,3 +788,140 @@ BW = f_H - f_L = 442.90 - 0 = 442.90 \, MHz
 \]
 
 </p>
+
+# Comprehensive Comparison of Differential Amplifiers (Detailed)
+
+| Parameter | Circuit 1 (Resistive Load) | Circuit 2 (Current Source Load) | Circuit 3 (CMOS Active Load) |
+|----------|---------------------------|--------------------------------|-----------------------------|
+| Load Type | Passive resistor | NMOS current source + PMOS load | PMOS active load |
+| Tail Source | Ideal current assumption | NMOS current source | PMOS bias-controlled current source |
+| Gain (V/V) | ~4.5 | ~38.5 | ~40.1 |
+| Gain (dB) | ~13 dB | ~31.75 dB | ~32.06 dB |
+| Output Resistance | Low (R only) | High (due to current source) | Very High (due to active load) |
+| Bandwidth | Moderate | Very High (~2.5 GHz) | High (~442.9 MHz) |
+| Gain-Bandwidth Tradeoff | Poor | Better | Optimized |
+| Power Efficiency | Low (static drop in R) | Medium | High (CMOS operation) |
+| Output Swing | Limited by resistor drop | Improved | Maximum (rail proximity) |
+| ICMR | Limited | Wider | Balanced and stable |
+| Linearity | Good (small signals only) | Better | Best (symmetric structure) |
+| Noise Performance | Higher (resistors) | Reduced | Lowest |
+| Matching Accuracy | Low | Medium | High (IC fabrication friendly) |
+| Area Requirement | Large (resistors occupy area) | Medium | Compact |
+| Design Complexity | Very low | Moderate | High |
+| Scalability | Poor | Moderate | Excellent |
+| Practical Usage | Educational | Analog circuits | IC design, Op-Amps |
+
+---
+
+# Inference 
+
+###  In **Circuit 1**,
+the resistive load limits the gain because:
+  - Output resistance is fixed and low  
+  - Voltage drop across resistor reduces available swing  
+
+- In **Circuit 2**, replacing the resistor with a **current source**:
+  - Increases output resistance significantly  
+  - Improves gain without increasing power  
+
+- In **Circuit 3**, using a **PMOS active load**:
+  - Provides very high output resistance  
+  - Enables current mirroring → better signal amplification  
+
+
+Gain improvement in amplifiers is mainly achieved by **increasing output resistance using active loads instead of passive elements**.
+
+
+
+###  Role of Biasing Techniques
+- Circuit 1 uses simple biasing → less control  
+- Circuit 2 introduces **current source biasing** → stabilizes operating point  
+- Circuit 3 uses **CMOS biasing** → precise control over transistor operation  
+
+Proper biasing is essential to:
+- Maintain saturation region  
+- Ensure linear operation  
+- Improve stability  
+
+---
+
+###  Gain vs Bandwidth Trade-off
+- Circuit 1 → Low gain, moderate bandwidth  
+- Circuit 2 → High bandwidth due to reduced resistive limitations  
+- Circuit 3 → Balanced gain and bandwidth  
+
+
+There is always a **trade-off between gain and bandwidth**, but CMOS designs optimize this trade-off effectively.
+
+---
+
+###  Power Efficiency Consideration
+- Circuit 1 wastes power in resistors  
+- Circuit 2 improves efficiency using active devices  
+- Circuit 3 (CMOS) minimizes static power loss  
+
+  
+CMOS technology is preferred because it offers **high performance with low power consumption**.
+
+---
+
+###  Output Swing and Signal Handling
+- Circuit 1 → Output limited due to voltage drop  
+- Circuit 2 → Better swing  
+- Circuit 3 → Maximum swing (close to supply rails)  
+
+ 
+Active loads allow **larger output signal variation**, improving dynamic range.
+
+---
+
+###  Linearity and Signal Integrity
+- Circuit 1 → Linear only for very small signals  
+- Circuit 2 → Improved linearity  
+- Circuit 3 → Best linearity due to symmetry  
+
+  
+Symmetrical CMOS structures provide **better linear amplification and reduced distortion**.
+
+---
+
+###  Practical Design Perspective
+- Circuit 1 is rarely used in real ICs  
+- Circuit 2 is used in intermediate analog stages  
+- Circuit 3 is widely used in:
+  - Operational amplifiers  
+  - Analog ICs  
+  - Mixed-signal circuits  
+
+
+Modern electronics rely heavily on **CMOS differential amplifiers**.
+
+---
+
+#  Result 
+
+- Designed and analyzed **three differential amplifier configurations**
+- Verified performance through:
+  - DC analysis → operating point validation  
+  - Transient analysis → linear & non-linear behavior  
+  - AC analysis → gain and bandwidth  
+
+---
+
+## Observations
+
+- Gain improved significantly:
+  \[
+  4.5 \rightarrow 38.5 \rightarrow 40.1
+  \]
+
+- Bandwidth reached:
+  - Up to **GHz range in Circuit 2**
+  - **High stable bandwidth in Circuit 3**
+
+- CMOS amplifier achieved:
+  - High gain (~33 dB)  
+  - Good bandwidth (~442.9 MHz)  
+  - Better efficiency  
+
+
