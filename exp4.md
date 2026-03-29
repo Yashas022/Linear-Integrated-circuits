@@ -426,3 +426,350 @@ condition for linearity
 $$
 V_{id} = 0.1V < 0.34V
 $$
+<img width="1480" height="293" alt="image" src="https://github.com/user-attachments/assets/db89c1d9-5537-4a88-ab44-254985a438b9" />
+condition for non- linearity 
+$$
+V_{id} = 500mV > 0.34V
+$$
+<img width="1433" height="284" alt="image" src="https://github.com/user-attachments/assets/66d9c1f7-8d56-4cab-86dd-769ade3fa9c4" />
+## Theoretical  Gain
+
+A_v = √[(μ_n × (W/L)_n) / (μ_p × (W/L)_p)]
+
+Substiting 
+μ_n = 273.809 × 10^-4
+μ_p = 115.689 × 10^-4
+
+(W/L)_n = 38.2 / 480×10^-9
+(W/L)_p = 30.625 / 480×10^-9
+
+
+A_v = √[(273.809 × 38.2) / (115.689 × 30.625)]
+A_v = √(10462.9 / 3542.9)
+A_v = √(2.95)
+A_v ≈ 1.718 V/V
+
+Gain in dB
+A_v(dB) = 20 log(A_v)
+A_v(dB) = 20 log(1.718)
+A_v(dB) ≈ 4.70 dB
+# Simulated gain
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+
+
+
+A_v = \frac{385 \times 10^{-3}}{10 \times 10^{-3}}
+
+A_v = 38.5
+$$
+A_v(dB) = 20\log_{10}(38.5) =31.75db
+$$
+# AC analysis 
+<img width="1132" height="223" alt="image" src="https://github.com/user-attachments/assets/86e3ba72-db42-4d1b-a193-998d5365cd77" />
+Bandwidth = f{h} - f{l}
+          = 2.5 Ghz- 0 
+          = 2.5 GHz
+
+## CMOS Differential Amplifier with PMOS Bias I.e bias controlled 
+circuit diagram 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/670c93f6-6788-495d-b644-14e15e046e41" />
+Power Constraint
+
+Total power:
+$$
+P = (V_{DD} - V_{SS}) \cdot I_{SS}
+$$
+
+$$
+V_{DD} - V_{SS} = 1.8V
+$$
+
+$$
+1.8 \cdot I_{SS} \leq 1.8 \times 10^{-3}
+\Rightarrow I_{SS} \leq 1mA
+$$
+$$
+I_{D1} = I_{D2} = \frac{I_{SS}}{2} = 0.5mA
+$$
+## NMOS Differential Pair (M1, M2)
+
+| Parameter | Value |
+|----------|------|
+| \(V_G\) | 0 V |
+| \(V_S\) | -0.7 V |
+| \(V_D\) | 0 V |
+
+$$
+V_{GS} = 0.7V
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+
+$$
+V_{DS} = 0.7V
+$$
+
+**Condition:**
+$$
+V_{DS} > V_{OV}
+$$
+PMOS Active Load (M3, M4)
+
+| Parameter | Value |
+|----------|------|
+| \(V_S\) | 0.9 V |
+| \(V_D\) | 0 V |
+
+$$
+V_{SD} = 0.9V
+$$
+
+### Saturation Requirement:
+$$
+V_{SD} \ge V_{SG} - |V_T|
+$$
+
+$$
+V_G \ge -0.39V
+$$
+
+**Chosen bias:**
+$$
+V_{b2} = -0.36V
+$$
+
+$$
+V_{SG} = 1.26V
+$$
+
+$$
+V_{OV(p)} = 0.87V
+$$
+
+**Check:**
+$$
+0.9 > 0.87
+$$
+This verifies mosfet is in saturation region 
+
+## PMOS Width Calculation (Wₚ)
+
+### Given Parameters
+
+- Drain Current:  
+  \( I_D = 0.5 \, mA = 0.5 \times 10^{-3} \, A \)
+
+- Channel Length:  
+  \( L = 480 \, nm = 480 \times 10^{-9} \, m \)
+
+- Process Parameter:  
+  \( \mu_p C_{ox} = 9.98 \times 10^{-5} \)
+
+- Overdrive Voltage:  
+  \( V_{OV(p)} = 0.87 \, V \)
+
+---
+
+### Formula Used
+
+\[
+W_p = \frac{2 I_D L}{\mu_p C_{ox} \cdot V_{OV(p)}^2}
+\]
+
+---
+
+### Substitution
+
+\[
+W_p = \frac{2 \times (0.5 \times 10^{-3}) \times (480 \times 10^{-9})}{9.98 \times 10^{-5} \times (0.87)^2}
+\]
+
+---
+
+### Simplification
+
+\[
+W_p = \frac{480 \times 10^{-12}}{9.98 \times 10^{-5} \times 0.7569}
+\]
+
+\[
+W_p = \frac{480 \times 10^{-12}}{7.55 \times 10^{-5}}
+\]
+
+---
+
+### Final Result
+
+\[
+W_p \approx 6.35 \, \mu m
+\]
+
+---
+
+### Conclusion
+
+\[
+W_3 = W_4 \approx 6.35 \, \mu m
+\]
+Adjusted width after altering 
+\[
+W_{M3} = W_{M4} : 6.35 \, \mu m \rightarrow 13.876 \, \mu m
+\]
+## DC Analysis 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/29d0a8f0-07f2-4fa0-a6c0-6ce1376ec720" />
+# Input Common Mode Range (ICMR)
+\[
+V_{ICM(min)} = V_S + V_T = -0.7 + 0.36 = -0.34 \, V
+\]
+At the edge of saturation:
+
+\[
+V_D - V_S = V_{OV}
+\]
+
+ Using MOS Relations
+
+\[
+V_{OV} = V_{GS} - V_T
+\]
+
+\[
+V_{GS} = V_{ICM} - V_S
+\]
+\[
+0.7 = (V_{ICM} + 0.7) - 0.36
+\]
+
+\[
+0.7 = V_{ICM} + 0.34
+\]
+\[
+V_{ICM(max)} = 0.36 \, V
+\]
+
+## Input Common Mode Range
+
+\[
+-0.34 \, V \leq V_{ICM} \leq 0.36 \, V
+\]
+# Differential Input Voltage Range
+
+\[
+v_{id} = v_{in1} - v_{in2}
+\]
+## Maximum Differential Input Voltage
+
+<p align="center">
+
+\[
+v_{id(max)} = 2V_{OV}
+\]
+
+\[
+= 2 \times 0.34 = 0.68 \, V
+\]
+
+</p>
+
+---
+
+## Differential Input Range
+
+<p align="center">
+
+\[
+-0.68 \, V \leq v_{id} \leq 0.68 \, V
+\]
+
+</p>
+
+## Transient Analysis 
+# linear region 
+<p align="center">
+
+\[
+v_{id} = 10\, mV < 0.48 \, V
+\]
+
+</p>
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/f44cfe82-cec4-4cba-bcb0-d2ca067bb120" />
+
+# Non-Linear Region
+\[
+v_{id} = 500\, mV > 0.48 \, V
+\]
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/3ead58cf-3fff-4c3d-9ad6-430011414820" />
+# Simulateed Gain 
+
+<p align="center">
+
+\[
+V_{in(p-p)} = 5\,mV - (-5\,mV) = 10\,mV
+\]
+
+\[
+V_{out(p-p)} = 161\,mV - (-240\,mV) = 401\,mV
+\]
+
+\[
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}} = \frac{401 \times 10^{-3}}{10 \times 10^{-3}} = 40.1
+\]
+
+\[
+A_v(dB) = 20\log_{10}(40.1) \approx 32.06 \, dB
+\]
+
+</p>
+
+# Theoritical gain 
+<p align="center">
+
+\[
+r_{o,eff} = r_{on} \parallel r_{op} = 18.5k \parallel 18.5k \approx 9.25 \, k\Omega
+\]
+
+\[
+g_m = \frac{2I_D}{V_{OV}} = \frac{2 \times 0.54 \times 10^{-3}}{0.34} \approx 3.18 \, mS
+\]
+
+\[
+A_v = g_m \cdot R_{out} = 3.18 \times 10^{-3} \times 9.25 \times 10^{3} \approx 29.4
+\]
+
+\[
+A_v(dB) = 20\log_{10}(29.4) \approx 29.36 \, dB
+\]
+
+</p>
+
+# AC analysis 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/d7bad21d-d7ef-4827-8a6b-237d100bd5db" />
+
+Midband gain:
+
+
+<p align="center">
+
+\[
+A_v = 33 \, dB
+\]
+
+\[
+A_v(-3dB) = 33 - 3 = 30 \, dB
+\]
+# Cuttoff Frequencies 
+\[
+f_L = 0 \, Hz
+\]
+
+\[
+f_H = 442.90 \, MHz
+\]
+# Band width calculation 
+\[
+BW = f_H - f_L = 442.90 - 0 = 442.90 \, MHz
+\]
+
+</p>
